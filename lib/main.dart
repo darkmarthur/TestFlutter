@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(widget.title),
+        title: new Text(widget.title)
       ),
       body: new Center(
           child: new ListView(
@@ -54,16 +54,19 @@ class _MyHomePageState extends State<MyHomePage> {
 class PlaceWidget extends StatelessWidget {
   final Place _place;
   PlaceWidget(this._place);
+  Color getColor(double rating) {
+    return Color.lerp(Colors.red, Colors.green, rating / 5);
+  }
 
   @override
   Widget build(BuildContext context0) {
-    return  new ListTile(
+    return new ListTile(
       leading: new CircleAvatar(
         child: new Text(_place.rating.toString()),
-        backgroundColor: Colors.green,
+        backgroundColor: getColor(_place.rating)
       ),
       title: new Text(_place.name),
-      subtitle: new Text(_place.address),
+      subtitle: new Text(_place.address)
     );
   }
 }

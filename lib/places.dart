@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 //import 'key.dart';
 
 main() {
-  getPlaces(18.8666868,-99.2587548);
+  getPlaces(33.9850, -118.4695);
 }
 
 class Place {
