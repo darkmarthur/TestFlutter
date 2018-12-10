@@ -1,29 +1,6 @@
-import 'dart:async' show Future;
-import 'dart:convert' show json;
-import 'package:flutter/services.dart' show rootBundle;
+// Copyright 2018 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
 
-
-class Secret {
-  final String apikey;
-
-  Secret({this.apikey=""});
-
-  factory Secret.fromJson(Map<String, dynamic>places){
-    return new Secret(apikey:places["api_key"]);
-  }
-}
-
-
-class SecretLoader {
-  final String secretPath;
-
-  SecretLoader({this.secretPath});
-  Future<Secret> load() {
-    return rootBundle.loadStructuredData<Secret>(this.secretPath,
-            (jsonStr) async {
-          final secret = Secret.fromJson(json.decode(jsonStr));
-          return secret;
-
-        });
-  }
-}
+/// Key to access Google Places API
+const key = 'AIzaSyDFHeo_rYGn2Gm5GiI1Gy5e_tcJ5rD_b8I';

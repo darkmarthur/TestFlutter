@@ -40,9 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.title)
-      ),
+      appBar: new AppBar(title: new Text(widget.title)),
       body: new Center(
           child: new ListView(
         children: _places.map((place) => new PlaceWidget(place)).toList(),
@@ -59,14 +57,20 @@ class PlaceWidget extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context0) {
-    return new ListTile(
-      leading: new CircleAvatar(
-        child: new Text(_place.rating.toString()),
-        backgroundColor: getColor(_place.rating)
-      ),
-      title: new Text(_place.name),
-      subtitle: new Text(_place.address)
+  Widget build(BuildContext context) {
+    return new Dismissible (
+      key: new Key(_place.name),
+      background: new Container(color: Colors.green),
+      secondaryBackground: new Container(color: Colors.red),
+      onDismissed: (direction) {
+        direction == DismissDirection.endToStart ? Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("No"))) : print('Yes');
+      },
+      child: new ListTile(
+          leading: new CircleAvatar(
+              child: new Text(_place.rating.toString()),
+              backgroundColor: getColor(_place.rating)),
+          title: new Text(_place.name),
+          subtitle: new Text(_place.address)),
     );
   }
 }

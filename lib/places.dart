@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:http/http.dart' as http;
+
+import 'key.dart' show key;
 //import 'key.dart';
 
 main() {
@@ -25,7 +27,7 @@ Future<Stream<Place>> getPlaces(double lat, double lng) async {
   var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json' +
       '?location=$lat,$lng' +
       '&radius=500&type=restaurant' +
-      '&key=AIzaSyDFHeo_rYGn2Gm5GiI1Gy5e_tcJ5rD_b8I';
+      '&key=$key';
 
   // http.get(url).then(
   //   (res) => print(res.body)
